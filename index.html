@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pivotal Health Co. – Health Consulting & Coaching</title>
+  <meta name="description" content="Pivotal Health Co. helps busy adults build sustainable health through simple training, nutrition, and habit frameworks." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111111;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e8e8e8;
+      --gray-500: #888888;
+      --gray-700: #444444;
+      --accent: #1a1a1a;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Georgia', serif;
+      --max-w: 760px;
+      --section-pad: 80px 24px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      z-index: 100;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--black);
+    }
+
+    .nav-logo span {
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    nav a.nav-cta {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--black);
+      text-decoration: none;
+      border: 1.5px solid var(--black);
+      padding: 8px 18px;
+      border-radius: 4px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    nav a.nav-cta:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 100px 24px 80px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--gray-700);
+      max-width: 560px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+
+    .hero-note {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: var(--gray-500);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: var(--section-pad);
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .section-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+    }
+
+    section h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .section-lead {
+      color: var(--gray-700);
+      font-size: 1rem;
+      max-width: 600px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    /* WHO FOR GRID */
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .who-card {
+      background: var(--gray-100);
+      border-radius: 6px;
+      padding: 24px;
+    }
+
+    .who-card-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gray-500);
+      margin-bottom: 10px;
+    }
+
+    .who-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .who-card p {
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      line-height: 1.6;
+    }
+
+    /* WORK ON GRID */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 32px;
+    }
+
+    .work-item h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .work-item p {
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      line-height: 1.6;
+    }
+
+    /* APPROACH */
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+      margin-bottom: 48px;
+    }
+
+    .approach-item h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .approach-item p {
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      line-height: 1.6;
+    }
+
+    .principle-block {
+      border-left: 3px solid var(--black);
+      padding: 20px 24px;
+      background: var(--gray-100);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .principle-block blockquote {
+      font-size: 1.3rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+
+    .principle-block cite {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      font-style: normal;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* INCLUDED LIST */
+    .included-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 14px;
+    }
+
+    .included-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: var(--gray-700);
+    }
+
+    .included-list li::before {
+      content: "✓";
+      font-weight: 700;
+      color: var(--black);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* HOW IT WORKS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 32px;
+    }
+
+    .step-num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gray-200);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .step h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      line-height: 1.6;
+    }
+
+    /* APPLY SECTION */
+    #apply {
+      background: var(--gray-100);
+    }
+
+    .apply-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .apply-inner h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .apply-inner .section-lead {
+      margin-bottom: 36px;
+    }
+
+    /* FORM */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      color: var(--black);
+      background: var(--white);
+      transition: border-color 0.15s;
+      appearance: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--black);
+    }
+
+    textarea { resize: vertical; min-height: 100px; }
+
+    .honeypot { display: none; }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--black);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      margin-top: 8px;
+    }
+
+    .btn-submit:hover { opacity: 0.85; }
+
+    /* SUCCESS MESSAGE */
+    .success-message {
+      display: none;
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: 6px;
+      padding: 32px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .success-message h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .success-message p {
+      color: var(--gray-700);
+      font-size: 0.95rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 24px;
+      border-top: 1px solid var(--gray-200);
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .footer-brand {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .footer-tagline {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+    }
+
+    .footer-disclaimer {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      max-width: 560px;
+      margin: 0 auto 16px;
+      line-height: 1.6;
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .who-grid, .work-grid, .approach-grid, .included-list, .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">Pivotal <span>health</span></a>
+    <a class="nav-cta" href="#apply">Start Here</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-eyebrow">Health Consulting &amp; Coaching</p>
+    <h1>Build strength.<br>Fix habits.<br><em>Stay healthy for life.</em></h1>
+    <p class="hero-sub">Pivotal Health Co. helps busy adults build sustainable health through simple training, nutrition, and habit frameworks. No extreme diets. No complicated routines.</p>
+    <a class="btn-primary" href="#apply">Apply for Coaching</a>
+    <p class="hero-note">No commitment required to apply.</p>
+  </div>
+
+  <!-- WHO THIS IS FOR -->
+  <section id="who">
+    <div class="section-inner">
+      <p class="section-eyebrow">Who This Is For</p>
+      <h2>Built for people who are ready to move forward.</h2>
+      <p class="section-lead">Not the most extreme client. Not the most motivated. Just someone who wants a real plan and is willing to do the work.</p>
+      <div class="who-grid">
+        <div class="who-card">
+          <p class="who-card-num">01</p>
+          <h3>Busy professionals &amp; parents</h3>
+          <p>Limited time, real demands — you need a plan that actually fits your life.</p>
+        </div>
+        <div class="who-card">
+          <p class="who-card-num">02</p>
+          <h3>People who've started and stopped</h3>
+          <p>You've tried things before. What was missing was structure and a sustainable approach.</p>
+        </div>
+        <div class="who-card">
+          <p class="who-card-num">03</p>
+          <h3>People who want a clear system</h3>
+          <p>You're not looking for motivation content. You want a plan, accountability, and progress.</p>
+        </div>
+        <div class="who-card">
+          <p class="who-card-num">04</p>
+          <h3>People who want to get stronger</h3>
+          <p>Build muscle, improve your energy, move better, and feel more capable in daily life.</p>
+        </div>
+        <div class="who-card">
+          <p class="who-card-num">05</p>
+          <h3>People who feel overwhelmed</h3>
+          <p>There's too much conflicting advice out there. Let's simplify it and focus on what actually moves the needle.</p>
+        </div>
+        <div class="who-card">
+          <p class="who-card-num">06</p>
+          <h3>People who want long-term health</h3>
+          <p>Not a six-week fix. A foundation you can build on for years.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE WORK ON -->
+  <section id="services">
+    <div class="section-inner">
+      <p class="section-eyebrow">What We Work On</p>
+      <h2>Simple systems across the areas that matter most.</h2>
+      <p class="section-lead">Coaching is personalized to your starting point and goals. Most clients work on some combination of these areas.</p>
+      <div class="work-grid">
+        <div class="work-item">
+          <h3>Strength &amp; Training</h3>
+          <p>Practical programming built around foundational movement — not complicated or extreme.</p>
+        </div>
+        <div class="work-item">
+          <h3>Nutrition Guidance</h3>
+          <p>Simple, educational guidance on food quality, protein, and building habits that last.</p>
+        </div>
+        <div class="work-item">
+          <h3>Habit Development</h3>
+          <p>Identify the habits holding you back and build better ones, one step at a time.</p>
+        </div>
+        <div class="work-item">
+          <h3>Lifestyle &amp; Stress</h3>
+          <p>Sleep, recovery, stress patterns — these affect your results more than most people realize.</p>
+        </div>
+        <div class="work-item">
+          <h3>Supplement Education</h3>
+          <p>Straightforward guidance on what's worth considering and what isn't — no upselling.</p>
+        </div>
+        <div class="work-item">
+          <h3>Accountability &amp; Check-ins</h3>
+          <p>Ongoing support, adjustments, and someone in your corner who actually pays attention.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE APPROACH -->
+  <section id="approach">
+    <div class="section-inner">
+      <p class="section-eyebrow">The Approach</p>
+      <h2>The goal isn't the hardest plan. It's the right one.</h2>
+      <p class="section-lead">Most people don't need more information. They need a plan they can actually follow, and someone to hold them to it.</p>
+      <div class="approach-grid">
+        <div class="approach-item">
+          <h3>Consistency over intensity</h3>
+          <p>Simple, done consistently, beats perfect done occasionally. Every time.</p>
+        </div>
+        <div class="approach-item">
+          <h3>Start where you are</h3>
+          <p>Your starting point isn't a problem. It's the doorway. We build from there.</p>
+        </div>
+        <div class="approach-item">
+          <h3>Muscle matters</h3>
+          <p>Strength training is one of the most protective things you can do for your long-term health.</p>
+        </div>
+        <div class="approach-item">
+          <h3>Progress, not punishment</h3>
+          <p>This should feel like capacity building — not a test of willpower or suffering.</p>
+        </div>
+      </div>
+      <div class="principle-block">
+        <blockquote>"Do the next right thing."</blockquote>
+        <cite>The Pivotal Health Coaching Principle</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section id="included">
+    <div class="section-inner">
+      <p class="section-eyebrow">What's Included</p>
+      <h2>Everything you need. Nothing you don't.</h2>
+      <p class="section-lead">Coaching is personalized, practical, and built around your actual life — not a generic template.</p>
+      <ul class="included-list">
+        <li>A personalized training plan based on your level and goals</li>
+        <li>General nutrition guidance and food habit support</li>
+        <li>Habit and lifestyle coaching tailored to your schedule</li>
+        <li>Supplement education — what to consider and why</li>
+        <li>Regular check-ins and ongoing adjustments</li>
+        <li>Direct access to ask questions and stay on track</li>
+        <li>A clear, simple system you can maintain long-term</li>
+        <li>A coach who pays attention and adapts as you progress</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="section-inner">
+      <p class="section-eyebrow">How It Works</p>
+      <h2>Three simple steps to get started.</h2>
+      <p class="section-lead">No long sales calls, no pressure. Just a straightforward process to see if it's a good fit.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Apply</h3>
+          <p>Fill out a short intake form so I can understand where you are, what you're working with, and what you want to build toward.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Connect</h3>
+          <p>We'll have a brief conversation to go over your goals, answer your questions, and confirm coaching is a good fit.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Start building</h3>
+          <p>You get your plan, we get to work. Simple, structured, and paced for real life — not a 30-day challenge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLY / FORM -->
+  <section id="apply">
+    <div class="apply-inner">
+      <p class="section-eyebrow">Ready to Start?</p>
+      <h2>Take the next right step.</h2>
+      <p class="section-lead">Fill out the short form below — it takes about five minutes. There's no commitment to apply.</p>
+
+      <div class="success-message" id="success">
+        <h3>Application received.</h3>
+        <p>Thanks for applying — I'll be in touch within 1–2 business days to set up a brief call.</p>
+      </div>
+
+      <form
+        name="application"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        id="apply-form"
+      >
+        <input type="hidden" name="form-name" value="application" />
+
+        <div class="honeypot form-group">
+          <label>Don't fill this out: <input name="bot-field" /></label>
+        </div>
+
+        <div class="form-group">
+          <label for="first-name">First Name *</label>
+          <input type="text" id="first-name" name="first-name" placeholder="Jane" required />
+        </div>
+
+        <div class="form-group">
+          <label for="last-name">Last Name *</label>
+          <input type="text" id="last-name" name="last-name" placeholder="Smith" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="activity">Current Activity Level *</label>
+          <select id="activity" name="activity" required>
+            <option value="" disabled selected>Select one…</option>
+            <option value="sedentary">Sedentary (little to no exercise)</option>
+            <option value="light">Lightly active (1–2 days/week)</option>
+            <option value="moderate">Moderately active (3–4 days/week)</option>
+            <option value="active">Very active (5+ days/week)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="goal">What are you most looking to achieve? *</label>
+          <textarea id="goal" name="goal" placeholder="E.g. lose body fat, build muscle, fix my eating habits, have more energy…" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Anything else you'd like to share?</label>
+          <textarea id="notes" name="notes" placeholder="Previous injuries, schedule constraints, past experience with coaching, etc."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Apply for Coaching</button>
+      </form>
+
+      <p style="margin-top:20px; font-size:0.8rem; color:#888; line-height:1.6;">
+        Pivotal Health Co. provides health consulting and coaching — not medical care, dietetic services, or licensed therapy. All information is educational in nature.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-brand">Pivotal Health Co.</p>
+      <p class="footer-tagline">Health Consulting &amp; Coaching for Busy Adults</p>
+      <p class="footer-disclaimer">
+        This website is for educational and informational purposes only and does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before making changes to your health routine.
+      </p>
+      <p class="footer-copy">© 2025 Pivotal Health Co. · All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Show success message after form submit (Netlify redirects by default — this handles AJAX fallback)
+    const form = document.getElementById('apply-form');
+    const success = document.getElementById('success');
+
+    // Check if redirected back with ?success=true
+    if (window.location.search.includes('success=true')) {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
