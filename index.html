@@ -1,490 +1,1128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pivotal Health Co. â Health Consulting & Coaching</title>
-<meta name="description" content="Pivotal Health Co. helps people train around injuries, manage health complications, and build lasting strength. Coaching for powerlifters and busy adults who want to keep going." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pivotal Health Co. – Health Consulting & Coaching</title>
+  <meta name="description" content="Pivotal Health Co. coaches powerlifters and busy adults to train around injuries and health complications, stay strong, and keep competing.">
 
-:root {
---ink: #15191e;
---blue: #1d3a5f;
---blue-deep: #122638;
---blue-bright: #2f6fb3;
---cream: #f6f2ea;
---cream-2: #efe8da;
---line: #e2dccf;
---gray-600: #5b6470;
---white: #ffffff;
---font-sans: 'Inter', system-ui, -apple-system, sans-serif;
---font-display: 'Newsreader', Georgia, serif;
---max-w: 1080px;
---measure: 720px;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
-html { scroll-behavior: smooth; }
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-font-family: var(--font-sans);
-color: var(--ink);
-background: var(--cream);
-line-height: 1.6;
-font-size: 16px;
--webkit-font-smoothing: antialiased;
-}
+    :root {
+      --cream:       #FAF8F4;
+      --cream-alt:   #F0EBE3;
+      --dark:        #1C1A17;
+      --text:        #1C1A17;
+      --text-muted:  #6B6258;
+      --green:       #2C5F3D;
+      --green-hover: #234D31;
+      --gold:        #C4922A;
+      --gold-bg:     rgba(196, 146, 42, 0.1);
+      --border:      #DDD5C8;
+      --white:       #FFFFFF;
+      --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
 
-.wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    html { scroll-behavior: smooth; }
 
-.photo { position: relative; overflow: hidden; background: var(--blue-deep); }
-.photo img {
-display: block; width: 100%; height: 100%; object-fit: cover;
-filter: grayscale(22%) contrast(1.03) brightness(1.02);
-}
-.photo::after {
-content: ""; position: absolute; inset: 0;
-background: linear-gradient(160deg, rgba(29,58,95,0.38), rgba(18,38,56,0.55));
-}
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
 
-nav {
-position: sticky; top: 0; z-index: 100;
-background: rgba(246,242,234,0.88);
-backdrop-filter: saturate(140%) blur(8px);
-border-bottom: 1px solid var(--line);
-padding: 14px 24px;
-display: flex; justify-content: space-between; align-items: center;
-}
-.nav-logo { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; text-decoration: none; color: var(--ink); }
-.nav-logo span { font-family: var(--font-display); font-weight: 500; font-style: italic; }
-.nav-links { display: flex; gap: 12px; align-items: center; }
-nav a.nav-link { font-size: 0.875rem; font-weight: 600; color: var(--blue); text-decoration: none; padding: 8px 16px; border-radius: 4px; border: 1.5px solid transparent; transition: background 0.15s, color 0.15s, border-color 0.15s; }
-nav a.nav-link.ghost { border-color: var(--line); }
-nav a.nav-link.ghost:hover { border-color: var(--blue); }
-nav a.nav-link.solid { background: var(--blue); color: var(--white); }
-nav a.nav-link.solid:hover { background: var(--blue-deep); }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
 
-.hero { display: grid; grid-template-columns: 1.05fr 0.95fr; min-height: 560px; }
-.hero-copy { display: flex; flex-direction: column; justify-content: center; padding: 72px 24px 72px max(24px, calc((100vw - var(--max-w)) / 2 + 24px)); }
-.hero-copy-inner { max-width: 520px; }
-.hero-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 20px; }
-.hero h1 { font-family: var(--font-display); font-size: clamp(2.4rem, 4.6vw, 3.5rem); font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 22px; }
-.hero h1 em { font-style: italic; font-weight: 400; color: var(--blue); }
-.hero-sub { font-size: 1.1rem; color: var(--gray-600); margin-bottom: 32px; line-height: 1.7; }
-.hero-img { position: relative; min-height: 320px; }
-.hero-img img { position: absolute; inset: 0; }
+    /* ── TYPOGRAPHY ── */
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3.5vw, 2.9rem);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      line-height: 1.3;
+      font-weight: 600;
+    }
+    p { font-size: 1.05rem; line-height: 1.82; }
 
-.btn-primary { display: inline-block; background: var(--blue); color: var(--white); font-size: 1rem; font-weight: 600; padding: 14px 30px; border-radius: 5px; text-decoration: none; transition: background 0.15s, transform 0.15s; }
-.btn-primary:hover { background: var(--blue-deep); transform: translateY(-1px); }
-.hero-note { margin-top: 12px; font-size: 0.85rem; color: var(--gray-600); }
+    /* ── LAYOUT ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.75rem; }
+    .section     { padding: 6rem 0; }
+    .section-alt { background: var(--cream-alt); }
+    .section-dark { background: var(--dark); color: var(--white); }
 
-.mission { background: var(--blue); color: var(--white); }
-.mission .wrap { padding-top: 56px; padding-bottom: 56px; }
-.mission p { font-family: var(--font-display); font-size: clamp(1.4rem, 2.6vw, 2rem); font-weight: 400; line-height: 1.35; max-width: 860px; }
-.mission p strong { font-weight: 600; }
+    /* ── LABELS ── */
+    .label {
+      font-family: var(--sans);
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 1.1rem;
+    }
+    .label-gold  { color: var(--gold); }
+    .label-green { color: var(--green); }
+    .label-faint { color: rgba(196, 146, 42, 0.65); }
 
-section { padding: 84px 0; border-top: 1px solid var(--line); }
-.section-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
-section h2 { font-family: var(--font-display); font-size: clamp(1.7rem, 3.2vw, 2.3rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; margin-bottom: 16px; }
-.section-lead { color: var(--gray-600); font-size: 1.05rem; max-width: 640px; margin-bottom: 48px; line-height: 1.7; }
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(250, 248, 244, 0.97);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
 
-.who-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-.who-card { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 26px; }
-.who-card-num { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--blue); margin-bottom: 10px; }
-.who-card h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 8px; }
-.who-card p { font-size: 0.92rem; color: var(--gray-600); line-height: 1.6; }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.75rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
-.work-split { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 48px; align-items: center; }
-.work-photo { border-radius: 10px; aspect-ratio: 4 / 5; }
-.work-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 28px; }
-.work-item h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
-.work-item p { font-size: 0.9rem; color: var(--gray-600); line-height: 1.6; }
+    .nav-logo {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
 
-.coach-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-bottom: 56px; }
-.coach-row:last-child { margin-bottom: 0; }
-.coach-row.reverse .coach-photo { order: 2; }
-.coach-photo { border-radius: 10px; aspect-ratio: 5 / 4; }
-.coach-text .step-label { font-family: var(--font-display); font-size: 1.05rem; color: var(--blue); font-style: italic; margin-bottom: 8px; }
-.coach-text h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; margin-bottom: 12px; line-height: 1.25; }
-.coach-text p { color: var(--gray-600); font-size: 1rem; line-height: 1.7; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: nowrap;
+    }
 
-#about { background: var(--cream-2); }
-.about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
-.about-photo { border-radius: 10px; aspect-ratio: 3 / 4; position: sticky; top: 90px; }
-.about-body p { margin-bottom: 18px; font-size: 1.05rem; line-height: 1.75; color: #2a3138; max-width: var(--measure); }
-.about-body p.lede { font-family: var(--font-display); font-size: 1.3rem; line-height: 1.5; color: var(--ink); }
-.about-sign { font-family: var(--font-display); font-style: italic; color: var(--blue); font-size: 1.1rem; margin-top: 8px; }
+    .nav-refer {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .nav-refer:hover { color: var(--text); }
 
-.quote-band { background: var(--blue-deep); color: var(--white); }
-.quote-band .wrap { padding-top: 72px; padding-bottom: 72px; }
-.quote-band blockquote { font-family: var(--font-display); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 400; line-height: 1.45; max-width: 820px; }
-.quote-band cite { display: block; margin-top: 22px; font-family: var(--font-sans); font-style: normal; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: #aebfd2; }
+    .nav-cta {
+      background: var(--green);
+      color: var(--white);
+      padding: 0.55rem 1.15rem;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--green-hover); }
 
-.pull-quote { background: var(--blue); color: var(--white); border-top: none; padding: 0; }
-.pull-quote .wrap { padding-top: 64px; padding-bottom: 64px; text-align: center; }
-.pull-quote blockquote { font-family: var(--font-display); font-size: clamp(1.5rem, 2.8vw, 2.1rem); font-weight: 600; line-height: 1.3; max-width: 700px; margin: 0 auto 20px; font-style: italic; }
-.pull-quote cite { font-family: var(--font-sans); font-style: normal; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: #aebfd2; }
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding-top: 5rem;
+      overflow: hidden;
+      background: #0e1f3a;
+    }
 
-#faq .faq-list { max-width: var(--measure); margin-top: 40px; }
-#faq details { border-top: 1px solid var(--line); }
-#faq details:last-child { border-bottom: 1px solid var(--line); }
-#faq summary { font-size: 1rem; font-weight: 600; cursor: pointer; list-style: none; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-#faq summary::-webkit-details-marker { display: none; }
-#faq summary::after { content: "+"; font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; color: var(--blue); flex-shrink: 0; }
-#faq details[open] summary::after { content: "\2212"; }
-#faq details p { padding-bottom: 20px; color: var(--gray-600); line-height: 1.7; font-size: 0.97rem; }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1603665409265-bdc00027c217?auto=format&fit=crop&w=1400&q=70');
+      background-size: cover;
+      background-position: center top;
+    }
 
-.included-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
-.included-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.97rem; color: #2a3138; }
-.included-list li::before { content: "\2713"; font-weight: 700; color: var(--blue); flex-shrink: 0; margin-top: 1px; }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(10, 30, 80, 0.88) 0%,
+        rgba(10, 30, 80, 0.60) 50%,
+        rgba(10, 30, 80, 0.22) 100%
+      );
+    }
 
-.steps { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 32px; }
-.step-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 600; color: var(--blue); line-height: 1; margin-bottom: 12px; }
-.step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-.step p { font-size: 0.9rem; color: var(--gray-600); line-height: 1.6; }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      color: var(--white);
+    }
 
-#apply { position: relative; border-top: none; padding: 0; }
-.apply-photo { position: absolute; inset: 0; z-index: 0; }
-.apply-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; padding: 88px 24px; }
-.apply-card { background: var(--cream); border-radius: 12px; padding: 40px; box-shadow: 0 24px 60px rgba(18,38,56,0.28); }
-.apply-card .section-eyebrow { margin-bottom: 12px; }
-.apply-card h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 10px; }
-.apply-card .section-lead { margin-bottom: 30px; }
+    .hero-eyebrow {
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
 
-.form-group { margin-bottom: 18px; }
-label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 6px; }
-input[type="text"], input[type="email"], select, textarea {
-width: 100%; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 5px;
-font-family: var(--font-sans); font-size: 0.95rem; color: var(--ink); background: var(--white);
-transition: border-color 0.15s; appearance: none;
-}
-input:focus, select:focus, textarea:focus { outline: none; border-color: var(--blue); }
-textarea { resize: vertical; min-height: 100px; }
-.honeypot { display: none; }
-.btn-submit { width: 100%; background: var(--blue); color: var(--white); font-size: 1rem; font-weight: 600; padding: 15px; border: none; border-radius: 5px; cursor: pointer; transition: background 0.15s; margin-top: 8px; }
-.btn-submit:hover { background: var(--blue-deep); }
-.success-message { display: none; background: var(--white); border: 1.5px solid var(--line); border-radius: 8px; padding: 32px; text-align: center; margin-bottom: 24px; }
-.success-message h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; margin-bottom: 8px; }
-.success-message p { color: var(--gray-600); font-size: 0.95rem; }
+    .hero-content h1 { margin-bottom: 1.5rem; }
 
-footer { padding: 48px 24px; border-top: 1px solid var(--line); text-align: center; background: var(--cream); }
-.footer-inner { max-width: var(--max-w); margin: 0 auto; }
-.footer-brand { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; margin-bottom: 8px; }
-.footer-tagline { font-size: 0.8rem; color: var(--gray-600); margin-bottom: 16px; }
-.footer-disclaimer { font-size: 0.75rem; color: var(--gray-600); max-width: 560px; margin: 0 auto 16px; line-height: 1.6; }
-.footer-copy { font-size: 0.75rem; color: var(--gray-600); }
+    .hero-content h1 em {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.8);
+    }
 
-@media (max-width: 860px) {
-.hero { grid-template-columns: 1fr; }
-.hero-copy { padding: 56px 24px; }
-.hero-img { min-height: 300px; order: -1; }
-.work-split, .about-grid { grid-template-columns: 1fr; gap: 32px; }
-.about-photo { position: static; aspect-ratio: 16 / 10; }
-.work-photo { aspect-ratio: 16 / 10; }
-.coach-row { grid-template-columns: 1fr; gap: 24px; }
-.coach-row.reverse .coach-photo { order: 0; }
-}
-@media (max-width: 600px) {
-.who-grid, .work-grid, .included-list, .steps { grid-template-columns: 1fr; }
-.nav-links a.nav-link.ghost { display: none; }
-.apply-card { padding: 26px; }
-}
+    .hero-sub {
+      font-size: 1.1rem;
+      line-height: 1.78;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 2.5rem;
+      max-width: 510px;
+    }
 
-@media (prefers-reduced-motion: reduce) {
-html { scroll-behavior: auto; }
-* { transition: none !important; animation: none !important; }
-.btn-primary:hover { transform: none; }
-}
-</style>
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--green);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--green-hover); transform: translateY(-1px); }
+
+    .hero-note {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.45);
+      font-style: italic;
+    }
+
+    /* ── PHILOSOPHY BAND ── */
+    .philosophy-band {
+      background: var(--dark);
+      padding: 5rem 0;
+      border-top: 1px solid rgba(196, 146, 42, 0.25);
+      border-bottom: 1px solid rgba(196, 146, 42, 0.25);
+    }
+
+    .philosophy-inner {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .philosophy-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      line-height: 1.2;
+      color: var(--white);
+    }
+
+    .philosophy-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .philosophy-text p + p { margin-top: 1.1rem; }
+
+    /* ── WHO THIS IS FOR ── */
+    .for-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+
+    .for-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--gold);
+      border-radius: 3px;
+      padding: 2rem;
+    }
+
+    .for-num {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      opacity: 0.25;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .for-card h3 { margin-bottom: 0.5rem; }
+    .for-card p  { font-size: 0.92rem; color: var(--text-muted); line-height: 1.72; }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      padding: 1.75rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+    }
+
+    .service-bar {
+      width: 2rem;
+      height: 2px;
+      background: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .service-card h3 { margin-bottom: 0.5rem; }
+    .service-card p  { font-size: 0.9rem; color: var(--text-muted); line-height: 1.72; }
+
+    /* ── PRINCIPLES ── */
+    .principles { display: flex; flex-direction: column; gap: 5rem; margin-top: 4.5rem; }
+
+    .principle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .principle-img {
+      border-radius: 3px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .principle-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    .principle-big-num {
+      font-family: var(--serif);
+      font-size: 5rem;
+      font-weight: 700;
+      color: var(--gold);
+      opacity: 0.18;
+      line-height: 1;
+      margin-bottom: -0.75rem;
+    }
+
+    .principle-text h3 {
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      margin-bottom: 1rem;
+      margin-top: 0.25rem;
+    }
+    .principle-text p { color: var(--text-muted); line-height: 1.85; }
+
+    .principle-reverse { direction: rtl; }
+    .principle-reverse > * { direction: ltr; }
+
+    /* ── STORY ── */
+    .story-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .story-img-wrap {
+      border-radius: 3px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      position: sticky;
+      top: 5.5rem;
+    }
+    .story-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+    .story-text { display: flex; flex-direction: column; gap: 1.35rem; }
+    .story-text p { color: #3a3530; line-height: 1.85; }
+    .story-sig {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* ── TESTIMONIAL ── */
+    .testimonial-section {
+      background: var(--dark);
+      padding: 7rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-section::before {
+      content: '\201C';
+      position: absolute;
+      top: -3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--serif);
+      font-size: 28rem;
+      line-height: 1;
+      color: rgba(196, 146, 42, 0.05);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .testimonial-inner {
+      max-width: 840px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-label {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 0.06em;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 2.8vw, 1.7rem);
+      line-height: 1.75;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 1.5rem 0 2rem;
+    }
+
+    .testimonial-attr {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── TIERS ── */
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+      align-items: start;
+    }
+
+    .tier-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      position: relative;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .tier-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 36px rgba(196, 146, 42, 0.09);
+    }
+
+    .tier-card.featured {
+      border-top: 3px solid var(--green);
+    }
+
+    .tier-badge {
+      position: absolute;
+      top: -0.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green);
+      color: var(--white);
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.9rem;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .tier-name {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .tier-tag {
+      display: inline-block;
+      font-size: 0.73rem;
+      font-weight: 600;
+      color: var(--gold);
+      background: var(--gold-bg);
+      padding: 0.22rem 0.65rem;
+      border-radius: 2px;
+      width: fit-content;
+      letter-spacing: 0.02em;
+    }
+
+    .tier-rule { height: 1px; background: var(--border); }
+
+    .tier-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      flex: 1;
+    }
+
+    .tier-features li {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      padding-left: 1.4rem;
+      position: relative;
+      line-height: 1.55;
+    }
+
+    .tier-features li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .tiers-note {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-family: var(--serif);
+      font-style: italic;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 2.75rem;
+      margin-top: 4rem;
+      max-width: 540px;
+    }
+
+    .step { display: flex; gap: 2rem; align-items: flex-start; }
+
+    .step-num {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+      opacity: 0.28;
+      line-height: 1;
+      flex-shrink: 0;
+      width: 2.5rem;
+      text-align: right;
+    }
+
+    .step-text h3 { margin-bottom: 0.4rem; }
+    .step-text p  { font-size: 0.93rem; color: var(--text-muted); line-height: 1.78; }
+
+    /* ── APPLY ── */
+    .apply-section { background: var(--cream-alt); padding: 6.5rem 0; }
+    .apply-inner { max-width: 560px; margin: 0 auto; }
+
+    .apply-urgency {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      margin-bottom: 3rem;
+    }
+
+    .form-group { margin-bottom: 1.4rem; }
+
+    label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.45rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      background: var(--white);
+      color: var(--text);
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--green);
+    }
+
+    textarea { min-height: 100px; resize: vertical; }
+    .honeypot { display: none !important; }
+
+    .form-submit {
+      width: 100%;
+      padding: 1.05rem;
+      background: var(--green);
+      color: var(--white);
+      border: none;
+      border-radius: 3px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      font-family: var(--sans);
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+    .form-submit:hover { background: var(--green-hover); }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--white);
+      border-radius: 3px;
+      border-top: 3px solid var(--green);
+    }
+    .form-success h3 {
+      font-family: var(--serif);
+      color: var(--green);
+      margin-bottom: 0.75rem;
+      font-size: 1.6rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255, 255, 255, 0.45);
+      padding: 3.5rem 0 2.5rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+    .footer-sub { font-size: 0.82rem; }
+
+    .footer-link {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: var(--white); }
+
+    .footer-legal {
+      font-size: 0.76rem;
+      color: rgba(255, 255, 255, 0.26);
+      line-height: 1.72;
+    }
+    .footer-legal p + p { margin-top: 0.4rem; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      .philosophy-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 4rem 0; }
+
+      .nav-links { gap: 0.65rem; }
+      .nav-refer { font-size: 0.75rem; }
+      .nav-cta   { padding: 0.5rem 0.85rem; font-size: 0.75rem; }
+
+      .hero { min-height: 88vh; min-height: 88svh; }
+
+      .for-grid      { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .tiers-grid    { grid-template-columns: 1fr; }
+
+      .principle         { grid-template-columns: 1fr; gap: 2rem; }
+      .principle-reverse { direction: ltr; }
+      .principle-reverse .principle-img { order: -1; }
+      .principles { gap: 3.5rem; }
+
+      .story-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .story-img-wrap { position: relative; top: 0; aspect-ratio: 16/9; }
+
+      .testimonial-section::before { font-size: 14rem; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-logo { font-size: 1rem; }
+      .nav-links { gap: 0.5rem; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-<a class="nav-logo" href="#top">Pivotal <span>Health</span></a>
-<div class="nav-links">
-<a class="nav-link ghost" href="/referral.html">Refer a Friend</a>
-<a class="nav-link solid" href="#apply">Start Here</a>
-</div>
+<!-- ─── NAV ─── -->
+<nav id="top">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">Pivotal Health</a>
+    <div class="nav-links">
+      <a href="/referral.html" class="nav-refer">Refer a Friend</a>
+      <a href="#apply" class="nav-cta">Start Here</a>
+    </div>
+  </div>
 </nav>
 
-<a id="top"></a>
-
-<header class="hero">
-<div class="hero-copy">
-<div class="hero-copy-inner">
-<p class="hero-eyebrow">Health Consulting &amp; Coaching</p>
-<h1>Your prime<br><em>isn't over.</em></h1>
-<p class="hero-sub">Injuries, health complications, a body that pushes back â none of it has to stop you. Pivotal Health builds practical coaching around where you actually are and where you still want to go.</p>
-<a class="btn-primary" href="#apply">Start the Rebuild</a>
-<p class="hero-note">No commitment required to apply.</p>
-</div>
-</div>
-<div class="hero-img photo">
-<img src="https://images.unsplash.com/photo-1603665409265-bdc00027c217?auto=format&fit=crop&w=1400&q=70" alt="Weights staged on a gym floor, set up and ready before a training session." loading="eager" />
-</div>
-</header>
-
-<div class="mission">
-<div class="wrap">
-<p><strong>Your body has work to do.</strong> Health isn't a vanity project. It's a decision to take what you've been given and build it into something capable and durable â with discipline, on purpose. Pivotal Health exists for the person who gets that: someone who wants to show up for their training, their family, and their life â and knows the body has to hold up for all of it.</p>
-</div>
-</div>
-
-<section id="who">
-<div class="wrap">
-<p class="section-eyebrow">Who This Is For</p>
-<h2>Built for people who are ready to move forward.</h2>
-<p class="section-lead">Not the most extreme client. Not the most motivated. Just someone who wants a real plan and is willing to do the work.</p>
-<div class="who-grid">
-<div class="who-card"><p class="who-card-num">01</p><h3>Lifters training around injuries</h3><p>You've got a list of things that hurt and a total you still want to build. You need programming that works around the damage â not a plan that pretends it isn't there.</p></div>
-<div class="who-card"><p class="who-card-num">02</p><h3>Lifters managing health complications</h3><p>Bloodwork, blood pressure, a diagnosis that changed the conversation. You want to stay strong without ignoring what your body is telling you.</p></div>
-<div class="who-card"><p class="who-card-num">03</p><h3>Busy professionals &amp; parents</h3><p>Limited time, real demands. You need a plan that fits the life you have â not one built for someone with three hours a day.</p></div>
-<div class="who-card"><p class="who-card-num">04</p><h3>People building long-term health</h3><p>Not a six-week fix. Strength, energy, and habits you can build on for decades â and pass on to the people watching you.</p></div>
-</div>
-</div>
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Pivotal Health Co.</span>
+      <h1>Your lifting career<br>isn't <em>over.</em></h1>
+      <p class="hero-sub">Injuries, health complications, a body that pushes back — none of it has to take the sport from you. Pivotal Health coaches powerlifters to train around what's hurt, rebuild what isn't, and keep competing. Built by a coach living it right now.</p>
+      <div class="hero-actions">
+        <a href="#apply" class="btn-primary">Start the Rebuild</a>
+        <span class="hero-note">No commitment required to apply.</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="services">
-<div class="wrap">
-<div class="work-split">
-<div class="work-photo photo">
-<img src="https://images.unsplash.com/photo-1602234382521-610b2abf9029?auto=format&fit=crop&w=900&q=70" alt="Fresh fruit, sliced and ready on a wooden board." loading="lazy" />
+<!-- ─── PHILOSOPHY ─── -->
+<div class="philosophy-band">
+  <div class="container">
+    <div class="philosophy-inner">
+      <div>
+        <span class="label label-faint">What We Believe</span>
+        <h2 class="philosophy-heading">Your body<br>has work<br>to do.</h2>
+      </div>
+      <div class="philosophy-text">
+        <p>Health isn't a vanity project. It's a decision to take what you've been given and build it into something capable and durable — with discipline, on purpose. Pivotal Health exists for the person who gets that.</p>
+        <p>Not someone chasing a look. Someone who wants to show up for their training, their family, and their life — and knows the body has to hold up for all of it.</p>
+      </div>
+    </div>
+  </div>
 </div>
-<div>
-<p class="section-eyebrow">What We Work On</p>
-<h2>Simple systems across the areas that matter most.</h2>
-<p class="section-lead">Coaching is personalized to your starting point and goals. Most clients work on some combination of these areas.</p>
-<div class="work-grid">
-<div class="work-item"><h3>Strength &amp; Training</h3><p>Practical programming built around foundational movement â not complicated or extreme.</p></div>
-<div class="work-item"><h3>Nutrition Guidance</h3><p>Simple, educational guidance on food quality, protein, and building habits that last.</p></div>
-<div class="work-item"><h3>Habit Development</h3><p>Identify the habits holding you back and build better ones, one step at a time.</p></div>
-<div class="work-item"><h3>Lifestyle &amp; Stress</h3><p>Sleep, recovery, stress patterns â these affect your results more than most people realize.</p></div>
-<div class="work-item"><h3>Supplement Education</h3><p>Straightforward guidance on what's worth considering and what isn't â no upselling.</p></div>
-<div class="work-item"><h3>Accountability &amp; Check-ins</h3><p>Ongoing support, adjustments, and someone in your corner who actually pays attention.</p></div>
-</div>
-</div>
-</div>
-</div>
+
+<!-- ─── WHO THIS IS FOR ─── -->
+<section class="section">
+  <div class="container">
+    <span class="label label-green">Who This Is For</span>
+    <h2>Built for people who want a foundation,<br>not just a transformation.</h2>
+    <div class="for-grid">
+      <div class="for-card">
+        <div class="for-num">01</div>
+        <h3>Powerlifters training around injuries</h3>
+        <p>You've got a list of things that hurt and a total you still want to build. You need programming that works around the damage — not a plan that pretends it isn't there.</p>
+      </div>
+      <div class="for-card">
+        <div class="for-num">02</div>
+        <h3>Lifters managing health complications</h3>
+        <p>Bloodwork, blood pressure, a diagnosis that changed the conversation. You want to stay strong and stay in the sport without ignoring what your body is telling you.</p>
+      </div>
+      <div class="for-card">
+        <div class="for-num">03</div>
+        <h3>Busy professionals &amp; parents</h3>
+        <p>Limited time, real demands. You need a plan that fits the life you have — not one built for someone with three hours a day.</p>
+      </div>
+      <div class="for-card">
+        <div class="for-num">04</div>
+        <h3>People building long-term health</h3>
+        <p>Not a six-week fix. Strength, energy, and habits you can build on for decades — and pass on to the people watching you.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="approach">
-<div class="wrap">
-<p class="section-eyebrow">How I Coach</p>
-<h2>The goal isn't the hardest plan. It's the right one.</h2>
-<p class="section-lead">Most people don't need more information. They need a plan they can actually follow, and someone to hold them to it.</p>
-
-<div class="coach-row">
-<div class="coach-photo photo">
-<img src="https://images.unsplash.com/photo-1632077804406-188472f1a810?auto=format&fit=crop&w=1000&q=70" alt="A kettlebell resting on a garage gym floor." loading="lazy" />
-</div>
-<div class="coach-text">
-<p class="step-label">Principle 01</p>
-<h3>Consistency before intensity</h3>
-<p>Show up and do the basics well before adding more. Simple, done consistently, beats perfect done occasionally â every time.</p>
-</div>
-</div>
-
-<div class="coach-row reverse">
-<div class="coach-photo photo">
-<img src="https://images.unsplash.com/photo-1487956382158-bb926046304a?auto=format&fit=crop&w=1000&q=70" alt="A person walking a quiet road through open fields." loading="lazy" />
-</div>
-<div class="coach-text">
-<p class="step-label">Principle 02</p>
-<h3>Start where you actually are</h3>
-<p>Not where you used to be, or wish you were. Injured, deconditioned, overwhelmed, out of rhythm â that's the doorway, not a problem. We build from there.</p>
-</div>
-</div>
-
-<div class="coach-row">
-<div class="coach-photo photo">
-<img src="https://images.unsplash.com/photo-1526280760714-f9e8b26f318f?auto=format&fit=crop&w=1000&q=70" alt="An open notebook used as a simple habit tracker." loading="lazy" />
-</div>
-<div class="coach-text">
-<p class="step-label">Principle 03</p>
-<h3>Keep it simple and repeatable</h3>
-<p>Small habits that compound beat the perfect plan you can't sustain. We find the next achievable step, execute it well, and build momentum you can keep.</p>
-</div>
-</div>
-</div>
+<!-- ─── WHAT WE WORK ON ─── -->
+<section class="section section-alt">
+  <div class="container">
+    <span class="label label-green">What We Work On</span>
+    <h2>Simple systems across the areas that matter most.</h2>
+    <p style="margin-top:1rem;color:var(--text-muted);max-width:560px;">Coaching is personalized to your starting point and goals. Most clients work on some combination of these areas.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-bar"></div>
+        <h3>Strength &amp; Training</h3>
+        <p>Practical programming built around the squat, bench, and deadlift — and around whatever your body is currently arguing about.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-bar"></div>
+        <h3>Nutrition Guidance</h3>
+        <p>Simple, educational guidance on food quality, protein, and building habits that hold — not a meal plan you'll abandon in two weeks.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-bar"></div>
+        <h3>Habit Development</h3>
+        <p>Identify the habits holding you back and build better ones, one step at a time. Small things done consistently are the mechanism.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-bar"></div>
+        <h3>Lifestyle &amp; Stress</h3>
+        <p>Sleep, recovery, stress patterns — these affect your results more than most people realize, and they're addressable.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-bar"></div>
+        <h3>Supplement Education</h3>
+        <p>Straightforward guidance on what's worth considering and what isn't — no upselling, no agenda.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-bar"></div>
+        <h3>Accountability &amp; Check-ins</h3>
+        <p>Ongoing support, adjustments, and someone in your corner who actually pays attention and holds you to what you said you wanted.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="about">
-<div class="wrap">
-<div class="about-grid">
-<div class="about-photo photo">
-<img src="https://images.unsplash.com/photo-1566568531155-07244e00963d?auto=format&fit=crop&w=900&q=70" alt="A quiet detail from a home gym â weights and equipment at rest." loading="lazy" />
-</div>
-<div class="about-body">
-<p class="section-eyebrow">My Story</p>
-<p class="lede">I'm Andy, founder of Pivotal Health Co. I believe strength and health aren't reserved for the young, the genetically gifted, or people with all the time in the world.</p>
-<p>I spent most of high school overweight and out of shape â until one summer changed everything: fifty pounds lighter, and a real sense of what my body could actually do. That summer got me into wrestling, and a few years later, into the Army, where injuries from a combat deployment left me in enough pain that a doctor told me I'd never lift the way I used to.</p>
-<p>Years after leaving the service, life caught back up with me. Stress, old habits, and time away from training brought me back up to 180 pounds and out of shape. This time, instead of chasing a dramatic comeback, I started small â one habit, one workout, one week at a time. The rebuild back down to the 140s, lean and strong, is the same approach I use with every client. Not because it's exciting, but because it's the only thing that lasts.</p>
-<p>Most of the people I work with have jobs, families, old injuries, and not much spare time â and that's exactly who this is built for. I've been overweight, and I've been hurt badly enough to be told I'd never lift again, and I've rebuilt from both. I do this because I believe people are capable of more than they think, and I want to help them find that out.</p>
-<p class="about-sign">â Andy, Founder</p>
-</div>
-</div>
-</div>
+<!-- ─── HOW I COACH ─── -->
+<section class="section">
+  <div class="container">
+    <span class="label label-green">How I Coach</span>
+    <h2>The goal isn't the hardest plan.<br>It's the right one.</h2>
+    <p style="margin-top:1rem;color:var(--text-muted);max-width:560px;">Most people don't need more information. They need a plan they can actually follow, and someone to hold them to it.</p>
+    <div class="principles">
+
+      <div class="principle">
+        <div class="principle-img">
+          <img src="https://images.unsplash.com/photo-1487956382158-bb926046304a?auto=format&fit=crop&w=1000&q=70" alt="Starting where you are." loading="lazy">
+        </div>
+        <div class="principle-text">
+          <div class="principle-big-num">01</div>
+          <h3>Start where you actually are</h3>
+          <p>Not where you used to be, or wish you were. Injured, deconditioned, overwhelmed, out of rhythm — that's the doorway, not a disqualification. Healing and building are the same road, walked at the right pace.</p>
+        </div>
+      </div>
+
+      <div class="principle principle-reverse">
+        <div class="principle-img">
+          <img src="https://images.unsplash.com/photo-1632077804406-188472f1a810?auto=format&fit=crop&w=1000&q=70" alt="Consistency before intensity." loading="lazy">
+        </div>
+        <div class="principle-text">
+          <div class="principle-big-num">02</div>
+          <h3>Consistency before intensity</h3>
+          <p>Show up and do the basics well before adding more. Simple, done consistently, beats perfect done occasionally — every time. Programs don't build strength. Repeated weeks do.</p>
+        </div>
+      </div>
+
+      <div class="principle">
+        <div class="principle-img">
+          <img src="https://images.unsplash.com/photo-1526280760714-f9e8b26f318f?auto=format&fit=crop&w=1000&q=70" alt="A simple, repeatable system." loading="lazy">
+        </div>
+        <div class="principle-text">
+          <div class="principle-big-num">03</div>
+          <h3>Keep it simple and repeatable</h3>
+          <p>The plan you can actually repeat is the only plan that works. Simplicity is not a compromise — it's wisdom. We find the next achievable step, execute it well, and build momentum that doesn't require perfect conditions.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 
-<div class="quote-band">
-<div class="wrap">
-<blockquote>
-"I wanted a program that increased my endurance, flexibility, and stability. Andy started me slow and built from there, and worked on my diet too. He checks in regularly and sends video clips of the exercises for home, so I don't have to spend time and money at a gym. I'm very pleased with the progress and look forward to the next steps. I'd recommend Pivotal Health for anyone wanting to get more out of life."
-</blockquote>
-<cite>â Long-term Pivotal Health client</cite>
-</div>
-</div>
-
-<div class="pull-quote">
-<div class="wrap">
-<blockquote>"Getting hurt doesn't end the sport. Quitting the rebuild does."</blockquote>
-<cite>â Andy, Founder</cite>
-</div>
-</div>
-
-<section id="included">
-<div class="wrap">
-<p class="section-eyebrow">What's Included</p>
-<h2>Everything you need. Nothing you don't.</h2>
-<p class="section-lead">Coaching is personalized, practical, and built around your actual life â not a generic template.</p>
-<ul class="included-list">
-<li>A personalized training plan based on your level and goals</li>
-<li>General nutrition guidance and food habit support</li>
-<li>Habit and lifestyle coaching tailored to your schedule</li>
-<li>Supplement education â what to consider and why</li>
-<li>Regular check-ins and ongoing adjustments</li>
-<li>Direct access to ask questions and stay on track</li>
-<li>A clear, simple system you can maintain long-term</li>
-<li>A coach who pays attention and adapts as you progress</li>
-</ul>
-</div>
+<!-- ─── MY STORY ─── -->
+<section class="section section-alt">
+  <div class="container">
+    <span class="label label-green">My Story</span>
+    <div class="story-layout">
+      <div class="story-img-wrap">
+        <img src="https://images.unsplash.com/photo-1566568531155-07244e00963d?auto=format&fit=crop&w=900&q=70" alt="Andy, founder of Pivotal Health Co." loading="lazy">
+      </div>
+      <div class="story-text">
+        <p>I'm Andy, founder of Pivotal Health Co. I'm a combat veteran, and injuries from that deployment left me in enough pain that a doctor told me I'd never lift the way I used to. Today I'm still competing in powerlifting while managing health complications in real time. The gap between what I was told and what I'm still doing is what this business is built on.</p>
+        <p>It didn't start there. I spent most of high school overweight and out of shape — until one summer changed everything: fifty pounds lighter, and a real sense of what my body could actually do. That summer got me into wrestling, and a few years later, into the Army.</p>
+        <p>Years after leaving the service, life caught back up with me — stress, old habits, and time away from training brought me back up to 180 pounds and out of shape. This time, instead of chasing a dramatic comeback, I started small: one habit, one workout, one week at a time. The rebuild back down to the 140s, lean and strong, is the same approach I use with every client. Not because it's exciting — because it's the only thing that lasts.</p>
+        <p>I'm not coaching from a chapter I closed years ago. I'm managing injuries and health complications right now — still training, still competing, still lean. Everything I ask a client to do, I'm doing this week.</p>
+        <p>If you're a lifter who's been told to slow down, scale back, or hang it up — or you're carrying a job, a family, old injuries, and not much spare time — this was built for you.</p>
+        <p class="story-sig">— Andy, Founder</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="how">
-<div class="wrap">
-<p class="section-eyebrow">How It Works</p>
-<h2>Three simple steps to get started.</h2>
-<p class="section-lead">No long sales calls, no pressure. Just a straightforward process to see if it's a good fit.</p>
-<div class="steps">
-<div class="step"><div class="step-num">01</div><h3>Apply</h3><p>Fill out a short intake form so I can understand where you are, what you're working with, and what you want to build toward.</p></div>
-<div class="step"><div class="step-num">02</div><h3>Connect</h3><p>We'll have a brief conversation to go over your goals, answer your questions, and confirm coaching is a good fit.</p></div>
-<div class="step"><div class="step-num">03</div><h3>Start building</h3><p>You get your plan, we get to work. Simple, structured, and paced for real life â not a 30-day challenge.</p></div>
-</div>
-</div>
+<!-- ─── TESTIMONIAL ─── -->
+<section class="testimonial-section">
+  <div class="container">
+    <div class="testimonial-inner">
+      <span class="label label-faint">Client Results</span>
+      <p class="testimonial-label">From one of my longer-term coaching clients, outside the powerlifting side of things:</p>
+      <p class="testimonial-quote">
+        "I wanted a program that increased my endurance, flexibility, and stability. Andy started me slow and built from there, and worked on my diet too. He checks in regularly and sends video clips of the exercises for home, so I don't have to spend time and money at a gym. I'm very pleased with the progress and look forward to the next steps. I'd recommend Pivotal Health for anyone wanting to get more out of life."
+      </p>
+      <p class="testimonial-attr">Long-term Pivotal Health client</p>
+    </div>
+  </div>
 </section>
 
-<section id="faq">
-<div class="wrap">
-<p class="section-eyebrow">FAQ</p>
-<h2>Common questions, straight answers.</h2>
-<div class="faq-list">
-<details>
-<summary>What if I have injuries or am dealing with a health condition?</summary>
-<p>That's most of my clients â and me. I coach around injuries and health complications every day, in my own training and my clients'. I'm not a doctor and I don't replace one â no diagnosis, no treatment, and I work alongside whatever your providers have cleared. What I do is build training and nutrition that respect your situation instead of ignoring it.</p>
-</details>
-<details>
-<summary>I'm a powerlifter â is this just general fitness coaching?</summary>
-<p>No. Powerlifting is a core specialization here. Programming can be built around the squat, bench, and deadlift, your meet timeline, and whatever your body is currently working around. If you're chasing a total while managing a body that's pushing back, this is the lane.</p>
-</details>
-<details>
-<summary>How much time does this actually require each week?</summary>
-<p>Your training sessions, plus about ten minutes for check-ins. The plan is built around your schedule â most of my clients have jobs, families, and old injuries. If a plan needs a perfect week to work, it isn't a plan.</p>
-</details>
-<details>
-<summary>What makes this different from just following a program online?</summary>
-<p>A program doesn't watch how you move, adjust when your shoulder flares up, or answer the question you have at 9pm. This does. Your plan changes as your body and your life change, and someone is accountable for it working. Templates are cheap. Adjustments are the value.</p>
-</details>
-<details>
-<summary>What happens after I apply?</summary>
-<p>I read every application and reply within a couple of days. If it looks like a fit, we talk â no pressure, no script â about where you are and what you're trying to keep doing. If I'm not the right coach for what you need, I'll tell you that too.</p>
-</details>
-</div>
-</div>
+<!-- ─── PULL QUOTE ─── -->
+<section class="section" style="padding: 4rem 0;">
+  <div class="container">
+    <div style="max-width: 680px; margin: 0 auto; border-left: 3px solid var(--gold); padding-left: 2rem;">
+      <p style="font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-style: italic; line-height: 1.65; color: var(--text);">"Getting hurt doesn't end the sport. Quitting the rebuild does."</p>
+      <p style="margin-top: 1rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted);">— Andy, Founder</p>
+    </div>
+  </div>
 </section>
 
-<section id="apply">
-<div class="apply-photo photo">
-<img src="https://images.unsplash.com/photo-1544955752-78051eb9b0b8?auto=format&fit=crop&w=1600&q=65" alt="" aria-hidden="true" loading="lazy" />
-</div>
-<div class="apply-inner">
-<div class="apply-card">
-<p class="section-eyebrow">Ready to Start?</p>
-<h2>Take the next right step.</h2>
-<p class="section-lead">Fill out the short form below â it takes about five minutes. There's no commitment to apply.</p>
+<!-- ─── TIERS ─── -->
+<section class="section">
+  <div class="container">
+    <span class="label label-green">Coaching Options</span>
+    <h2>Find the level that fits your life.</h2>
+    <p style="margin-top:1rem;color:var(--text-muted);max-width:560px;">Every tier includes a personalized plan and ongoing support. The difference is how much direct coaching time and video review you want each month.</p>
+    <div class="tiers-grid">
 
-<div class="success-message" id="success">
-<h3>Application received.</h3>
-<p>Thanks for applying â I'll be in touch within 1â2 business days to set up a brief call.</p>
-</div>
+      <div class="tier-card">
+        <div class="tier-name">Next Step</div>
+        <div class="tier-tag">Async support</div>
+        <div class="tier-rule"></div>
+        <ul class="tier-features">
+          <li>Personalized training plan</li>
+          <li>Nutrition guidance</li>
+          <li>Habit &amp; lifestyle coaching</li>
+          <li>Supplement education</li>
+          <li>Regular check-ins</li>
+          <li>Direct message access</li>
+        </ul>
+      </div>
 
-<form name="application" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="apply-form">
-<input type="hidden" name="form-name" value="application" />
-<div class="honeypot form-group">
-<label>Don't fill this out: <input name="bot-field" /></label>
-</div>
-<div class="form-group">
-<label for="first-name">First Name *</label>
-<input type="text" id="first-name" name="first-name" placeholder="Jane" required />
-</div>
-<div class="form-group">
-<label for="last-name">Last Name *</label>
-<input type="text" id="last-name" name="last-name" placeholder="Smith" required />
-</div>
-<div class="form-group">
-<label for="email">Email Address *</label>
-<input type="email" id="email" name="email" placeholder="jane@example.com" required />
-</div>
-<div class="form-group">
-<label for="activity">Current Activity Level *</label>
-<select id="activity" name="activity" required>
-<option value="" disabled selected>Select one...</option>
-<option value="sedentary">Sedentary (little to no exercise)</option>
-<option value="light">Lightly active (1-2 days/week)</option>
-<option value="moderate">Moderately active (3-4 days/week)</option>
-<option value="active">Very active (5+ days/week)</option>
-</select>
-</div>
-<div class="form-group">
-<label for="goal">What are you most looking to achieve? *</label>
-<textarea id="goal" name="goal" placeholder="E.g. lose body fat, build muscle, fix my eating habits, have more energy..." required></textarea>
-</div>
-<div class="form-group">
-<label for="notes">Anything else you'd like to share?</label>
-<textarea id="notes" name="notes" placeholder="Previous injuries, schedule constraints, past experience with coaching, etc."></textarea>
-</div>
-<button type="submit" class="btn-submit">Apply for Coaching</button>
-</form>
+      <div class="tier-card featured">
+        <div class="tier-badge">Most Selected</div>
+        <div class="tier-name">Next Step Connect</div>
+        <div class="tier-tag">+ 1 call / month (30 min)</div>
+        <div class="tier-rule"></div>
+        <ul class="tier-features">
+          <li>Everything in Next Step</li>
+          <li>One 30-min coaching call/month</li>
+          <li>Video review of your squat, bench, and deadlift</li>
+          <li>Live goal review &amp; plan adjustments</li>
+        </ul>
+      </div>
 
-<p style="margin-top:18px; font-size:0.8rem; color:#5b6470; line-height:1.6;">
-Pivotal Health Co. provides health consulting and coaching â not medical care, dietetic services, or licensed therapy. All information is educational in nature.
-</p>
-</div>
-</div>
+      <div class="tier-card">
+        <div class="tier-name">Next Step Full</div>
+        <div class="tier-tag">+ 2 calls / month (30 min)</div>
+        <div class="tier-rule"></div>
+        <ul class="tier-features">
+          <li>Everything in Next Step Connect</li>
+          <li>Two 30-min coaching calls/month</li>
+          <li>Priority video review turnaround</li>
+          <li>Closest coaching relationship</li>
+        </ul>
+      </div>
+
+    </div>
+    <p class="tiers-note">Not sure which tier is right for you? Apply and we'll figure it out together on our first call.</p>
+  </div>
 </section>
 
+<!-- ─── HOW IT WORKS ─── -->
+<section class="section section-alt">
+  <div class="container">
+    <span class="label label-green">How It Works</span>
+    <h2>Three steps. No pressure.</h2>
+    <p style="margin-top:1rem;color:var(--text-muted);max-width:500px;">No long sales calls, no commitment to apply. Just a straightforward process to see if it's a good fit.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <h3>Apply</h3>
+          <p>Fill out a short intake form so I can understand where you are, what you're working with, and what you want to build toward.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <h3>Connect</h3>
+          <p>We'll have a brief conversation to go over your goals, answer your questions, confirm coaching is a good fit — and determine which tier makes sense for where you are.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <h3>Start building</h3>
+          <p>You get your plan, we get to work. Simple, structured, and paced for real life — not a 30-day challenge.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="section section-alt" id="faq">
+  <div class="container">
+    <span class="label label-green">Common Questions</span>
+    <h2>What you're probably wondering.</h2>
+    <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 0; max-width: 720px;">
+
+      <div style="border-bottom: 1px solid var(--border); padding: 2rem 0;">
+        <h3 style="margin-bottom: 0.75rem;">What if I have injuries or am dealing with a health condition?</h3>
+        <p style="color: var(--text-muted);">That's most of my clients — and me. I coach around injuries and health complications every day, in my own training and my clients'. I'm not a doctor and I don't replace one — no diagnosis, no treatment, and I work alongside whatever your providers have cleared. What I do is build training and nutrition that respect your situation instead of ignoring it.</p>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--border); padding: 2rem 0;">
+        <h3 style="margin-bottom: 0.75rem;">I'm a powerlifter — is this just general fitness coaching?</h3>
+        <p style="color: var(--text-muted);">No. Powerlifting is the specialization. Programming is built around the squat, bench, and deadlift, your meet timeline, and whatever your body is currently arguing about. If you're chasing a total while managing a body that's pushing back, this is the lane.</p>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--border); padding: 2rem 0;">
+        <h3 style="margin-bottom: 0.75rem;">How much time does this actually require each week?</h3>
+        <p style="color: var(--text-muted);">Your training sessions, plus about ten minutes for check-ins. The plan is built around your schedule — most of my clients have jobs, families, and old injuries. If a plan needs a perfect week to work, it isn't a plan.</p>
+      </div>
+
+      <div style="border-bottom: 1px solid var(--border); padding: 2rem 0;">
+        <h3 style="margin-bottom: 0.75rem;">What makes this different from just following a program online?</h3>
+        <p style="color: var(--text-muted);">A program doesn't watch how you move, adjust when your shoulder flares up, or answer the question you have at 9pm. This does. Your plan changes as your body and your life change, and someone is accountable for it working. Templates are cheap. Adjustments are the value.</p>
+      </div>
+
+      <div style="padding: 2rem 0;">
+        <h3 style="margin-bottom: 0.75rem;">What happens after I apply?</h3>
+        <p style="color: var(--text-muted);">I read every application and reply within a couple of days. If it looks like a fit, we talk — no pressure, no script — about where you are and what you're trying to keep doing. If I'm not the right coach for what you need, I'll tell you that too.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── APPLY ─── -->
+<section class="apply-section" id="apply">
+  <div class="container">
+    <div class="apply-inner">
+      <span class="label label-green">Ready to Start?</span>
+      <h2>Take the next right step.</h2>
+      <p class="apply-urgency">Don't wait to feel ready. That's what this is for.</p>
+
+      <div class="form-success" id="formSuccess">
+        <h3>Application received.</h3>
+        <p>Thanks for applying — I'll be in touch within 1–2 business days to set up a brief call.</p>
+      </div>
+
+      <form name="coaching-application" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="applyForm">
+        <input type="hidden" name="form-name" value="coaching-application">
+        <div class="honeypot">
+          <label>Don't fill this out: <input name="bot-field"></label>
+        </div>
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="activity">Current Activity Level</label>
+          <select id="activity" name="activity" required>
+            <option value="">Select one…</option>
+            <option value="sedentary">Sedentary (little to no exercise)</option>
+            <option value="lightly-active">Lightly active (1–2 days/week)</option>
+            <option value="moderately-active">Moderately active (3–4 days/week)</option>
+            <option value="very-active">Very active (5+ days/week)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="goal">What are you most looking to achieve?</label>
+          <textarea id="goal" name="goal" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="additional">Anything else you'd like to share?</label>
+          <textarea id="additional" name="additional"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Apply for Coaching</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
 <footer>
-<div class="footer-inner">
-<p class="footer-brand">Pivotal Health Co.</p>
-<p class="footer-tagline">Health Consulting &amp; Coaching</p>
-<p style="margin-bottom:16px;"><a href="/referral.html" style="color:#1d3a5f; font-weight:600; font-size:0.85rem; text-decoration:none;">Refer a friend &rarr;</a></p>
-<p class="footer-disclaimer">
-This website is for educational and informational purposes only and does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before making changes to your health routine.
-</p>
-<p class="footer-copy">&copy; 2026 Pivotal Health Co. &middot; All rights reserved.</p>
-</div>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Pivotal Health Co.</div>
+        <div class="footer-sub">Health Consulting &amp; Coaching</div>
+      </div>
+      <a href="/referral.html" class="footer-link">Refer a friend →</a>
+    </div>
+    <div class="footer-legal">
+      <p>Pivotal Health Co. provides health consulting and coaching — not medical care, dietetic services, or licensed therapy. All information is educational in nature.</p>
+      <p>This website is for educational and informational purposes only and does not constitute medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional before making changes to your health routine.</p>
+      <p>© 2026 Pivotal Health Co. · All rights reserved.</p>
+    </div>
+  </div>
 </footer>
 
 <script>
-const form = document.getElementById('apply-form');
-const success = document.getElementById('success');
-if (window.location.search.includes('success=true')) {
-form.style.display = 'none';
-success.style.display = 'block';
-success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
+  const form    = document.getElementById('applyForm');
+  const success = document.getElementById('formSuccess');
+  if (form) {
+    form.addEventListener('submit', function () {
+      setTimeout(function () {
+        form.style.display    = 'none';
+        success.style.display = 'block';
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 150);
+    });
+  }
 </script>
 
 </body>
